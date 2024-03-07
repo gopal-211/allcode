@@ -1,10 +1,26 @@
 import { useWallet,useDisconnect,ConnectWallet } from "@thirdweb-dev/react"
+import { ModeToggle } from "./components/mode-toggle"
+import {Route, Routes} from "react-router-dom"
+import Home from "./pages/Home"
+import Profile from "./pages/Profile"
+import CreateCampaign from "./pages/CreateCampaign"
+import CampaignDetails from "./pages/CampaignDetails"
+import Navbar from "./components/Navbar"
 
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-      <button></button>
-    </h1>
+    <div className="relative sm:-8 p-4 bg-[#13131a] min-h-screen flex flex-row">
+    
+      <div className="flex-1 max-sm:w-full max-w-[1280px] mx-auto sm:pr-5">
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/create-campaign" element={<CreateCampaign />} />
+          <Route path="/campaign-details/:id" element={<CampaignDetails />} />
+        </Routes>
+      </div>
+    </div>
   )
 }
